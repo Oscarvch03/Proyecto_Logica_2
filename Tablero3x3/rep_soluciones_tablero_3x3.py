@@ -3,7 +3,6 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-# from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 print("Listo!")
 
 ###############################################################################
@@ -43,6 +42,7 @@ def dibujar_tablero(f, letras, n):
     for t in tangulos:
         axes.add_patch(t)
 
+
     # Creando las direcciones en la imagen de acuerdo a literal
     direcciones = {}
     direcciones[1] = [0.165, 0.835]  # A
@@ -54,6 +54,7 @@ def dibujar_tablero(f, letras, n):
     direcciones[7] = [0.165, 0.165]  # G
     direcciones[8] = [0.5, 0.165]    # H
     direcciones[9] = [0.835, 0.165]  # I
+
 
     # Asignar direccion a cada casilla del tablero
     aux = {}
@@ -68,6 +69,7 @@ def dibujar_tablero(f, letras, n):
         aux["H" + str(i)] = 8
         aux["I" + str(i)] = 9
 
+
     # Asignamos los numeros de la interpretacion al tablero
     for l in f:
         if f[l] == 1:
@@ -80,7 +82,8 @@ def dibujar_tablero(f, letras, n):
     # plt.show()
 
     # Salvamos la imagen del tablero con la respectiva interpretación
-    fig.savefig("tablero_" + str(n) + ".png")
+    fig.savefig("tablero_3x3_" + str(n) + ".png")
+
 
 ###############################################################################
 # Bloque principal de instrucciones ###########################################
@@ -101,6 +104,7 @@ for i in range(1, 10):
 # print(len(inter1))
 
 # Letras proposicionales con valor de verdad en 1
+
 inter1["A1"] = 1
 inter1["B2"] = 1
 inter1["C3"] = 1
@@ -110,12 +114,7 @@ inter1["F6"] = 1
 inter1["G7"] = 1
 inter1["H8"] = 1
 inter1["I9"] = 1
-# print()
-# print(inter1)
 
-# print()
-# for j in inter1:
-#     print(j, inter1[j])
 
 ###############################################################################
 
@@ -133,6 +132,7 @@ for i in range(1, 10):
 # print(len(inter2))
 
 # Letras proposicionales con valor de verdad en 1
+
 inter2["A1"] = 1
 inter2["B4"] = 1
 inter2["C7"] = 1
@@ -142,16 +142,11 @@ inter2["F2"] = 1
 inter2["G3"] = 1
 inter2["H8"] = 1
 inter2["I5"] = 1
-# print()
-# print(inter2)
 
-# print()
-# for j in inter2:
-#     print(j, inter2[j])
-
-###############################################################################
+###########################################################
 
 # Asignamos los posibles numeros del tablero a las letras proposicionales
+
 asig = {}
 for k in range(1, 10):
     asig["A" + str(k)] = k
@@ -163,15 +158,11 @@ for k in range(1, 10):
     asig["G" + str(k)] = k
     asig["H" + str(k)] = k
     asig["I" + str(k)] = k
-# print()
-# print(asig)
 
-# print()
-# for l in asig:
-#     print(l, asig[l])
 
 ###############################################################################
 
 # Invocamos las funciones con las interpretaciones
+
 dibujar_tablero(inter1, asig, 1)
 dibujar_tablero(inter2, asig, 2)
